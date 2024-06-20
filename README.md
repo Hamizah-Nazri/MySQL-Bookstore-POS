@@ -1,6 +1,7 @@
 # Project-2 (Bookstore POS System) using MySQL Workbench
 
 * schema generation query
+  
 -- Create the customers table
 CREATE TABLE `customers` (
   `id` int DEFAULT NULL,
@@ -38,6 +39,7 @@ CREATE TABLE `invoices_lines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 * number of customers purchasing more than 5 books
+  
 SELECT COUNT(DISTINCT A.customer_id) AS num_customers
 FROM appendix_a.invoices AS A
 JOIN (
@@ -48,12 +50,14 @@ JOIN (
 ) AS P ON A.id = P.invoice_id;
 
 * list of customers who never purchased anything
+  
 SELECT DISTINCT C.id
 FROM appendix_a.customers AS C
 LEFT JOIN appendix_a.invoices AS I ON C.id = I.customer_id
 WHERE I.customer_id IS NULL;
 
 * list of book purchased with the users
+  
 SELECT 
     C.id AS 'CustomerID',
     C.name AS 'CustomerName',
